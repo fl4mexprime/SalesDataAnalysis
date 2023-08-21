@@ -69,6 +69,7 @@
       this.txt_input_file.TabIndex = 3;
       this.txt_input_file.TabStop = true;
       this.txt_input_file.Text = "No file";
+      this.txt_input_file.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.txt_input_file_LinkClicked);
       // 
       // txt_action_file
       // 
@@ -78,6 +79,7 @@
       this.txt_action_file.TabIndex = 4;
       this.txt_action_file.TabStop = true;
       this.txt_action_file.Text = "No file";
+      this.txt_action_file.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.txt_action_file_LinkClicked);
       // 
       // txt_result_file
       // 
@@ -87,6 +89,7 @@
       this.txt_result_file.TabIndex = 5;
       this.txt_result_file.TabStop = true;
       this.txt_result_file.Text = "No file";
+      this.txt_result_file.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.txt_result_file_LinkClicked);
       // 
       // btn_analyse
       // 
@@ -114,6 +117,9 @@
       this.Text = "Form1";
       this.ResumeLayout(false);
     }
+    private System.Windows.Forms.LinkLabel txt_result_file;
+    private System.Windows.Forms.LinkLabel txt_action_file;
+    private System.Windows.Forms.LinkLabel txt_input_file;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.Label label3;

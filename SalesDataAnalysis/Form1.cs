@@ -13,5 +13,17 @@ namespace SalesDataAnalysis
     {
       throw new System.NotImplementedException();
     }
+    private void txt_input_file_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+      throw new System.NotImplementedException();
+    }
+    private void txt_action_file_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+      throw new System.NotImplementedException();
+    }
+    private void txt_result_file_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+      throw new System.NotImplementedException();
+    }
   }
 }
