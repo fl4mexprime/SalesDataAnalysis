@@ -44,6 +44,7 @@
       this.txt_input.Size = new System.Drawing.Size(100, 23);
       this.txt_input.TabIndex = 0;
       this.txt_input.Text = "Input";
+      this.txt_input.Click += new System.EventHandler(this.txt_input_Click);
       // 
       // txt_action
       // 
@@ -52,6 +53,7 @@
       this.txt_action.Size = new System.Drawing.Size(100, 23);
       this.txt_action.TabIndex = 1;
       this.txt_action.Text = "Action";
+      this.txt_action.Click += new System.EventHandler(this.txt_action_Click);
       // 
       // txt_result
       // 
@@ -60,12 +62,13 @@
       this.txt_result.Size = new System.Drawing.Size(100, 23);
       this.txt_result.TabIndex = 2;
       this.txt_result.Text = "Result";
+      this.txt_result.Click += new System.EventHandler(this.txt_result_Click);
       // 
       // txt_input_file
       // 
-      this.txt_input_file.Location = new System.Drawing.Point(263, 9);
+      this.txt_input_file.Location = new System.Drawing.Point(49, 9);
       this.txt_input_file.Name = "txt_input_file";
-      this.txt_input_file.Size = new System.Drawing.Size(100, 23);
+      this.txt_input_file.Size = new System.Drawing.Size(314, 23);
       this.txt_input_file.TabIndex = 3;
       this.txt_input_file.TabStop = true;
       this.txt_input_file.Text = "No file";
@@ -73,9 +76,9 @@
       // 
       // txt_action_file
       // 
-      this.txt_action_file.Location = new System.Drawing.Point(263, 32);
+      this.txt_action_file.Location = new System.Drawing.Point(49, 32);
       this.txt_action_file.Name = "txt_action_file";
-      this.txt_action_file.Size = new System.Drawing.Size(100, 23);
+      this.txt_action_file.Size = new System.Drawing.Size(314, 23);
       this.txt_action_file.TabIndex = 4;
       this.txt_action_file.TabStop = true;
       this.txt_action_file.Text = "No file";
@@ -83,9 +86,9 @@
       // 
       // txt_result_file
       // 
-      this.txt_result_file.Location = new System.Drawing.Point(263, 55);
+      this.txt_result_file.Location = new System.Drawing.Point(49, 55);
       this.txt_result_file.Name = "txt_result_file";
-      this.txt_result_file.Size = new System.Drawing.Size(100, 23);
+      this.txt_result_file.Size = new System.Drawing.Size(314, 23);
       this.txt_result_file.TabIndex = 5;
       this.txt_result_file.TabStop = true;
       this.txt_result_file.Text = "No file";
@@ -117,6 +120,9 @@
       this.Text = "Form1";
       this.ResumeLayout(false);
     }
+    private System.Windows.Forms.Label txt_result;
+    private System.Windows.Forms.Label txt_action;
+    private System.Windows.Forms.Label txt_input;
     private System.Windows.Forms.LinkLabel txt_result_file;
     private System.Windows.Forms.LinkLabel txt_action_file;
     private System.Windows.Forms.LinkLabel txt_input_file;
