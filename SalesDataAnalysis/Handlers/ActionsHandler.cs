@@ -8,8 +8,17 @@ using Action = SalesDataAnalysis.Models.action.Action;
 
 namespace SalesDataAnalysis.Handlers
 {
+    /// <summary>
+    /// Handler for working with Companies
+    /// </summary>
     public static class ActionsHandler
     {
+        /// <summary>
+        /// Gets the sum of in the action specified attribute from all passed companies
+        /// </summary>
+        /// <param name="companies"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
         public static ResultModel Sum(IEnumerable<Company> companies, Action action)
         {
             decimal sum = 0;
@@ -23,11 +32,17 @@ namespace SalesDataAnalysis.Handlers
 
             return new ResultModel
             {
-                Result = sum,
+                Value = sum,
                 Name = action.Name
             };
         }
 
+        /// <summary>
+        /// Gets the maximum value of in the action specified attribute from all passed companies
+        /// </summary>
+        /// <param name="companies"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
         public static ResultModel Max(IEnumerable<Company> companies, Action action)
         {
             decimal max = 0;
@@ -44,11 +59,17 @@ namespace SalesDataAnalysis.Handlers
             
             return new ResultModel
             {
-                Result = max,
+                Value = max,
                 Name = action.Name
             };
         }
 
+        /// <summary>
+        /// Gets the minimum value of in the action specified attribute from all passed companies
+        /// </summary>
+        /// <param name="companies"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
         public static ResultModel Min(IEnumerable<Company> companies, Action action)
         {
             decimal min = 0;
@@ -71,11 +92,17 @@ namespace SalesDataAnalysis.Handlers
 
             return new ResultModel
             {
-                Result = min,
+                Value = min,
                 Name = action.Name
             };
         }
 
+        /// <summary>
+        /// Gets the average value of in the action specified attribute from all passed companies
+        /// </summary>
+        /// <param name="companies"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
         public static ResultModel Average(IEnumerable<Company> companies, Action action)
         {
             decimal count = 0;
@@ -90,7 +117,7 @@ namespace SalesDataAnalysis.Handlers
 
             return new ResultModel
             {
-                Result = count / companyList.Count,
+                Value = count / companyList.Count,
                 Name = action.Name
             };
         }

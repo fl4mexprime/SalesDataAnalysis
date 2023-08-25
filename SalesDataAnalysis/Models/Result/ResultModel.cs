@@ -6,8 +6,8 @@ namespace SalesDataAnalysis.Models.Result
     {
         [XmlAttribute("name")]
         public string Name { get; set; }
-
-        [XmlElement("result")]
-        public decimal Result { get; set; }
+        
+        [XmlText]
+        public decimal Value { get; set; }
     }
 }

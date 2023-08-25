@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Xml;
 using System.Xml.Serialization;
 using SalesDataAnalysis.Enums;
 using SalesDataAnalysis.Extensions;
@@ -47,6 +48,17 @@ namespace SalesDataAnalysis
                 
                 xml.Result.Add(res);
             }
+
+            if (string.IsNullOrWhiteSpace(_resultPath))
+                throw new Exception("No result path was given");
+
+            using var writer = new StreamWriter(_resultPath);
+            
+            // Adding empty namespace to omit xmlns being set on root element
+            var nameSpace = new XmlSerializerNamespaces();
+            nameSpace.Add("","");
+            
+            new XmlSerializer(typeof(ResultXml)).Serialize(writer, xml, nameSpace);
         }
         private void txt_input_file_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -54,6 +66,7 @@ namespace SalesDataAnalysis
             txt_input_file.Text = filePath;
 
             using var reader = new StreamReader(filePath);
+            
             var action = (InputXml) new XmlSerializer(typeof(InputXml)).Deserialize(reader);
             _input = action;
         }
@@ -70,7 +83,7 @@ namespace SalesDataAnalysis
         {
             var filePath = FileHelper.ChoosePathDialog();
             txt_result_file.Text = filePath;
-            _resultPath = filePath;
+            _resultPath = $"{filePath}\\result.xml";
         }
         private void txt_input_Click(object sender, EventArgs e)
         {

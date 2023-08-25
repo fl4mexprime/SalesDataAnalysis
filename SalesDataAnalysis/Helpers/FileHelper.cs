@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Security;
+﻿using System.Security;
 using System.Windows.Forms;
 
 namespace SalesDataAnalysis.Helpers
