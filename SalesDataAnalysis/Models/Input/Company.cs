@@ -15,9 +15,9 @@ namespace SalesDataAnalysis.Models.Input
         public int Outposts { get; set; }
 
         [XmlElement("salesVolume")]
-        public float SalesVolume { get; set; }
+        public decimal SalesVolume { get; set; }
 
         [XmlElement("profit")]
-        public float Profit { get; set; }
+        public decimal Profit { get; set; }
     }
 }
