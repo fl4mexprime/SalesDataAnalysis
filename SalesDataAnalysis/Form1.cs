@@ -4,8 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Serialization;
 using SalesDataAnalysis.Enums;
 using SalesDataAnalysis.Extensions;
 using SalesDataAnalysis.Handlers;
@@ -28,70 +26,99 @@ namespace SalesDataAnalysis
         }
         private void btn_analyse_Click(object sender, EventArgs e)
         {
+            if (_input.Company.Length == 0)
+                throw new Exception("Input file missing or empty");
+
+            if (_action.Actions.Length == 0)
+                throw new Exception("Action file missing or empty");
+
+            if (string.IsNullOrWhiteSpace(_resultPath))
+                throw new Exception("No result path was not given");
+
             var xml = new ResultXml
             {
                 Result = new List<ResultModel>()
             };
 
-            foreach (var action in _action.Actions)
+            try
             {
-                var result = _input.Company.Where(company => Regex.IsMatch(company.Name, action.Filter));
-
-                var res = action.Function.ToEnum<Function>() switch
+                // Go through all actions and handle each one using a matching function
+                foreach (var action in _action.Actions)
                 {
-                    Function.Sum => ActionsHandler.Sum(result, action),
-                    Function.Max => ActionsHandler.Max(result, action),
-                    Function.Min => ActionsHandler.Min(result, action),
-                    Function.Average => ActionsHandler.Average(result, action),
-                    _ => throw new Exception("Function not implemented")
-                };
-                
-                xml.Result.Add(res);
+                    var result = _input.Company.Where(company => Regex.IsMatch(company.Name, action.Filter));
+
+                    var res = action.Function.ToEnum<Function>() switch
+                    {
+                        Function.Sum => ActionsHandler.Sum(result, action),
+                        Function.Max => ActionsHandler.Max(result, action),
+                        Function.Min => ActionsHandler.Min(result, action),
+                        Function.Average => ActionsHandler.Average(result, action),
+                        _ => throw new Exception("Function not implemented")
+                    };
+
+                    xml.Result.Add(res);
+                }
+
+                // Write result file to _resultPath
+                using var writer = new StreamWriter(_resultPath);
+                var serializedXml = XmlHelper.Serialize(xml);
+                writer.Write(serializedXml);
+
+                MessageBox.Show($@"File was saved at {_resultPath}");
             }
-
-            if (string.IsNullOrWhiteSpace(_resultPath))
-                throw new Exception("No result path was given");
-
-            using var writer = new StreamWriter(_resultPath);
-            var serializedXml = XmlHelper.Serialize(xml);
-            writer.Write(serializedXml);
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
         }
         private void txt_input_file_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var filePath = FileHelper.OpenFileDialog();
-            txt_input_file.Text = filePath;
-
-            using var reader = new StreamReader(filePath);
+            string filePath;
             
-            var action = (InputXml) new XmlSerializer(typeof(InputXml)).Deserialize(reader);
-            _input = action;
+            try
+            {
+                filePath = FileHelper.OpenFileDialog();
+
+                _input = XmlHelper.Deserialize<InputXml>(filePath);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Error while reading file, are you sure it is in the right format?", exception.Message);
+                return;
+            }
+
+            txt_input_file.Text = filePath;
         }
         private void txt_action_file_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var filePath = FileHelper.OpenFileDialog();
-            txt_action_file.Text = filePath;
+            string filePath;
 
-            using var reader = new StreamReader(filePath);
-            var action = (ActionXml) new XmlSerializer(typeof(ActionXml)).Deserialize(reader);
-            _action = action;
+            try
+            {
+                filePath = FileHelper.OpenFileDialog();
+
+                _action = XmlHelper.Deserialize<ActionXml>(filePath);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Error while reading file, are you sure it is in the right format?", exception.Message);
+                return;
+            }
+            
+            txt_action_file.Text = filePath;
         }
         private void txt_result_file_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var filePath = FileHelper.ChoosePathDialog();
-            txt_result_file.Text = filePath;
-            _resultPath = $"{filePath}\\result.xml";
-        }
-        private void txt_input_Click(object sender, EventArgs e)
-        {
-            // do nothing
-        }
-        private void txt_action_Click(object sender, EventArgs e)
-        {
-            // do nothing
-        }
-        private void txt_result_Click(object sender, EventArgs e)
-        {
-            // do nothing
+            try
+            {
+                var filePath = FileHelper.ChoosePathDialog();
+                txt_result_file.Text = filePath;
+                _resultPath = $"{filePath}\\result.xml";
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Failed to write file", exception.Message);
+            }
         }
     }
 }

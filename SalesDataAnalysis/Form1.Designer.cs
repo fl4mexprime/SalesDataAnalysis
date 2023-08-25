@@ -44,7 +44,6 @@
       this.txt_input.Size = new System.Drawing.Size(100, 23);
       this.txt_input.TabIndex = 0;
       this.txt_input.Text = "Input";
-      this.txt_input.Click += new System.EventHandler(this.txt_input_Click);
       // 
       // txt_action
       // 
@@ -53,7 +52,6 @@
       this.txt_action.Size = new System.Drawing.Size(100, 23);
       this.txt_action.TabIndex = 1;
       this.txt_action.Text = "Action";
-      this.txt_action.Click += new System.EventHandler(this.txt_action_Click);
       // 
       // txt_result
       // 
@@ -62,7 +60,6 @@
       this.txt_result.Size = new System.Drawing.Size(100, 23);
       this.txt_result.TabIndex = 2;
       this.txt_result.Text = "Result";
-      this.txt_result.Click += new System.EventHandler(this.txt_result_Click);
       // 
       // txt_input_file
       // 
@@ -96,7 +93,7 @@
       // 
       // btn_analyse
       // 
-      this.btn_analyse.Location = new System.Drawing.Point(151, 98);
+      this.btn_analyse.Location = new System.Drawing.Point(151, 81);
       this.btn_analyse.Name = "btn_analyse";
       this.btn_analyse.Size = new System.Drawing.Size(75, 23);
       this.btn_analyse.TabIndex = 6;
@@ -108,7 +105,7 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(375, 133);
+      this.ClientSize = new System.Drawing.Size(375, 115);
       this.Controls.Add(this.btn_analyse);
       this.Controls.Add(this.txt_result_file);
       this.Controls.Add(this.txt_action_file);
