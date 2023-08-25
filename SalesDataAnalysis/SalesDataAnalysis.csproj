@@ -58,6 +58,7 @@
         </Compile>
         <Compile Include="Handlers\ActionsHandler.cs" />
         <Compile Include="Helpers\FileHelper.cs" />
+        <Compile Include="Helpers\XmlHelper.cs" />
         <Compile Include="Models\Action\Action.cs" />
         <Compile Include="Models\Action\ActionXml.cs" />
         <Compile Include="Models\Input\Company.cs" />

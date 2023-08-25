@@ -53,12 +53,8 @@ namespace SalesDataAnalysis
                 throw new Exception("No result path was given");
 
             using var writer = new StreamWriter(_resultPath);
-            
-            // Adding empty namespace to omit xmlns being set on root element
-            var nameSpace = new XmlSerializerNamespaces();
-            nameSpace.Add("","");
-            
-            new XmlSerializer(typeof(ResultXml)).Serialize(writer, xml, nameSpace);
+            var serializedXml = XmlHelper.Serialize(xml);
+            writer.Write(serializedXml);
         }
         private void txt_input_file_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
