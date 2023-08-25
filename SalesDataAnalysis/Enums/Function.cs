@@ -2,6 +2,9 @@
 
 namespace SalesDataAnalysis.Enums
 {
+    /// <summary>
+    /// Enum denoting all possible action functions
+    /// </summary>
     public enum Function
     {
         [Description("Sum")]
