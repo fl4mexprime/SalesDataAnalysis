@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesDataAnalysis", "SalesDataAnalysis\SalesDataAnalysis.csproj", "{F83C2B25-82B7-4176-B741-24FA0FFEF4A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesDataAnalysis.Tests", "SalesDataAnalysis.Tests\SalesDataAnalysis.Tests.csproj", "{627659A1-AD87-4F5D-A250-FAE2B8254C79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{F83C2B25-82B7-4176-B741-24FA0FFEF4A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F83C2B25-82B7-4176-B741-24FA0FFEF4A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F83C2B25-82B7-4176-B741-24FA0FFEF4A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{627659A1-AD87-4F5D-A250-FAE2B8254C79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{627659A1-AD87-4F5D-A250-FAE2B8254C79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{627659A1-AD87-4F5D-A250-FAE2B8254C79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{627659A1-AD87-4F5D-A250-FAE2B8254C79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
